@@ -51,7 +51,12 @@ uniform sampler2D tex[3];
 uniform int out_maps[7];
 
 void main(void) {
-    gl_FragColor = o[out_maps[2]] * texture(tex[0], o[out_maps[3]].xy);
+    vec4 texel = o[out_maps[2]] * texture(tex[0], o[out_maps[3]].xy);
+
+    if(texel.a == 0)
+        discard;
+
+    gl_FragColor = texel;
 }
 )";
 
