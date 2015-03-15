@@ -2,6 +2,7 @@ set(SRCS
             renderer_opengl/generated/gl_3_2_core.c
             renderer_opengl/renderer_opengl.cpp
             renderer_opengl/gl_shader_util.cpp
+            renderer_shared/shader_recompiler.cpp
             debug_utils/debug_utils.cpp
             clipper.cpp
             command_processor.cpp
@@ -18,6 +19,8 @@ set(HEADERS
             renderer_opengl/gl_shader_util.h
             renderer_opengl/gl_shaders.h
             renderer_opengl/renderer_opengl.h
+            renderer_shared/shader_recompiler.h
+            renderer_shared/SPIR_V.h
             clipper.h
             color.h
             command_processor.h
