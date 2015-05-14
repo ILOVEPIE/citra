@@ -152,7 +152,7 @@ struct Regs {
         RGB565       =  3,
         RGBA4        =  4,
         IA8          =  5,
-
+        GR8          =  6,  /// @attention The technically correct name for this format is HILO8 due to it being big-endian regardless of archetecture, because the 3ds is little-endian we have used the name GR8 to prevent confusion.
         I8           =  7,
         A8           =  8,
         IA4          =  9,
@@ -174,6 +174,7 @@ struct Regs {
         case TextureFormat::RGB565:
         case TextureFormat::RGBA4:
         case TextureFormat::IA8:
+        case TextureFormat::GR8:
             return 4;
 
         case TextureFormat::A4:

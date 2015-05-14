@@ -70,6 +70,17 @@ inline const Math::Vec4<u8> DecodeRGB8(const u8* bytes) {
 }
 
 /**
+ * Decode a color stored in GR8 (HILO8) format
+ * @attention The technically correct name for this format is HILO8 due to it being big-endian regardless of archetecture, because the 3ds is little-endian we have used the name GR8 to prevent confusion.
+ * @remark GR8 is not intended to store colors, the word color here is used just for consistency, GR8 is a format intended for normal maps.
+ * @param bytes Pointer to encoded source color
+ * @return Result color decoded as Math::Vec4<u8>
+ */
+inline const Math::Vec4<u8> DecodeGR8(const u8* bytes) {
+    return { bytes[0], bytes[1], 0, 255 };
+}
+
+/**
  * Decode a color stored in RGB565 format
  * @param bytes Pointer to encoded source color
  * @return Result color decoded as Math::Vec4<u8>
@@ -152,6 +163,17 @@ inline void EncodeRGB8(const Math::Vec4<u8>& color, u8* bytes) {
     bytes[0] = color.b();
 }
 
+/**
+ * Encode a color as GR8 (HILO8) format
+ * @attention The technically correct name for this format is HILO8 due to it being big-endian regardless of archetecture, because the 3ds is little-endian we have used the name GR8 to prevent confusion.
+ * @remark GR8 is not intended to store colors, the word color here is used just for consistency, GR8 is a format intended for normal maps.
+ * @param color Source color to encode
+ * @param bytes Destination pointer to store encoded color
+ */
+inline void EncodeGR8(const Math::Vec4<u8>& color, u8* bytes) {
+    bytes[0] = color.r();
+    bytes[1] = color.g();
+}
 /**
  * Encode a color as RGB565 format
  * @param color Source color to encode
